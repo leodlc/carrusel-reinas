@@ -4,7 +4,6 @@ import "./carrusel.css"
 export const CarouselItem=( {item}) => {
   return (
     <div className='carousel-item'>
-        <div></div>
         <figure className='carousel-img'>
           <img src={item.icon.default} />
         </figure>
