@@ -13,13 +13,13 @@ export const Carousel=() => {
 
         {
             title:"None",
-            description:"blah,blah,blah",
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing Nam hendrerit nisl turpis, quis",
             icon: require("./Media/p2.svg"),
         },
 
         {
             title:"None",
-            description:"blah,blah,blah",
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing Nam hendrerit nisl turpis, quis",
             icon: require("./Media/p3.svg"),
         },
         
@@ -40,14 +40,14 @@ export const Carousel=() => {
             style={{transform: `translate:(-${activeIndex * 100}%)`}}
         >    
         {items.map((item)=>{
-            return  <CarouselItem item={item}/>;
+            return  <CarouselItem item={item} width={"100%"}/>;
         })}
         
         </div>
 
         <div className = "carousel-buttons">
             <button onClick={()=>{
-                updateIndex(activeIndex -1);
+                updateIndex(activeIndex - 1);
             }} className='button-arrow'>
                 <span class="material-symbols-outlined">
                     arrow_back_ios
@@ -56,10 +56,22 @@ export const Carousel=() => {
             <div className='indicators'>
                 {items.map((item,index)=>{
                     return (
-                        <button className='indicator-buttons'>
-                            <span class="material-symbols-outlined">
-                                radio_button_checked
-                            </span>
+                        <button 
+                                className="indicator-buttons"
+                                onClick={() => {
+                                    updateIndex(index);
+                                }}
+                            >
+                            
+                                <span 
+                                className={`material-symbols-outlined ${
+                                    index === activeIndex
+                                    ? "indicator-symbol-active"
+                                    : "indicator-symbol"
+                                }`}
+                                >
+                                    radio_button_checked
+                                </span>
 
                         </button>
                     );
@@ -67,7 +79,13 @@ export const Carousel=() => {
                 
 
             </div>
-            <button className='button-arrow'>
+            <button 
+                
+                className='button-arrow'
+                onClick={() => {
+                 updateIndex(activeIndex + 1);
+                }}
+            >
                 <span class="material-symbols-outlined">
                     arrow_forward_ios
                 </span>
